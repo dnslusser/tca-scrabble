@@ -20,13 +20,24 @@ export const PlayGame = () => {
             <h2>
                 My Turn
             </h2>
-            <TextField>
-
-            </TextField>
-            <Button
-            startIcon={<AddIcon/>}>
-                
-            </Button>
+            <div>
+                <TextField
+                    label="My Word"
+                    id="myWord"
+                >
+                </TextField>
+                <Button
+                startIcon={<AddIcon/>}>
+                </Button>
+            </div>
+            <div>
+                <h2>
+                    Special Squares?
+                <Button
+                startIcon={<AddIcon/>}>
+                </Button>
+                </h2>
+            </div>
             <Button
                 variant="outlined"
             >
@@ -35,6 +46,7 @@ export const PlayGame = () => {
             <Button
                 variant="contained"
                 color="success"
+                onClick={() => nav("/waiting")}
             >
                 Submit
             </Button>
