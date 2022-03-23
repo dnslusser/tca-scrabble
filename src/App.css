@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: #C9DEDB;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .App-logo {
@@ -21,12 +23,20 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #C9DEDB;
 }
 
 .App-link {
   color: #61dafb;
 }
+
+/* .button {
+  background-color: #F1B5A9;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-family: 'Andale Mono Regular';
+} */
+
 
 @keyframes App-logo-spin {
   from {

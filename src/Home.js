@@ -29,8 +29,8 @@ export const Home = () => {
 
                 </h3>
                 <Button
+                    //class = "button"
                     variant = "outlined"
-                    color= "success"
                     size="large"
                     onClick={() => nav("/playgame")}
                 >
