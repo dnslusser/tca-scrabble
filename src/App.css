@@ -30,13 +30,10 @@
   color: #61dafb;
 }
 
-/* .button {
-  background-color: #F1B5A9;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-family: 'Andale Mono Regular';
-} */
-
+.generalButton {
+  margin: 15px;
+  color: black;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -46,3 +43,4 @@
     transform: rotate(360deg);
   }
 }
+
