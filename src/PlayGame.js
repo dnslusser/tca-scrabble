@@ -24,6 +24,7 @@ export const PlayGame = () => {
                 <TextField
                     label="My Word"
                     id="myWord"
+                    inputProps={{ maxLength: 7 }}
                 >
                 </TextField>
                 <Button
@@ -34,16 +35,20 @@ export const PlayGame = () => {
                 <h2>
                     Special Squares?
                 <Button
-                startIcon={<AddIcon/>}>
+                startIcon={<AddIcon/>}
+                onClick={() => nav("/SpecialSquare")}
+                >
                 </Button>
                 </h2>
             </div>
             <Button
+                className="generalButton"
                 variant="outlined"
             >
                 Challenged
             </Button>
             <Button
+                className="generalButton"
                 variant="contained"
                 color="success"
                 onClick={() => nav("/waiting")}
@@ -51,7 +56,9 @@ export const PlayGame = () => {
                 Submit
             </Button>
             <Button
+                className="generalButton"
                 variant="outlined"
+                onClick={() => nav("/waiting")}
             >
                 Skip
             </Button>
