@@ -29,6 +29,7 @@ export const Waiting = () => {
             </Button>
             <Button
                 variant="outlined"
+                onClick={() => nav("/scorePage")}
             >
                 Game Over
             </Button>
