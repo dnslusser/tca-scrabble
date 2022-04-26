@@ -2,16 +2,30 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
-// const calculateWinPercentage = () => (
-    
-// );
 
 // const calculateTopWord = () => ();
 
-export const Home = () => {
+export const Home = ({
+    gameResults
+    ,setCurrentGame
+
+}) => {
 
     
     const nav = useNavigate();
+
+    const startGame = () => {
+        setCurrentGame({
+            start: (new Date()).toISOString()
+        });
+        
+        nav("/playgame")
+    };
+
+    const win = gameResults.filter(n => n == true).length;
+
+    let calculateWinPercentage = ((win / gameResults.length)*100).toFixed(2);
+    calculateWinPercentage = isNaN(calculateWinPercentage) ? 0 : Number(calculateWinPercentage);
 
     return (
         <>
@@ -30,15 +44,15 @@ export const Home = () => {
                     Top word: Jukebox
                 </h3>
                 <h3>
-                    Win %: 67.3%
+                    Total games played: {gameResults.length}
                 </h3>
                 <h3>
-
+                    Win Percentage: {calculateWinPercentage} %
                 </h3>
                 <Button
                     variant = "outlined"
                     size="large"
-                    onClick={() => nav("/playgame")}
+                    onClick={startGame}
                 >
                 Play
                 </Button>
