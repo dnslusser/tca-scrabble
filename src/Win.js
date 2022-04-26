@@ -22,7 +22,7 @@ export const Win = () => {
             <p>
                 <Button
                     variant="outlined"
-                    onClick={() => nav("/Home")}
+                    onClick={() => nav("/")}
                 >
                     Exit
                 </Button>
