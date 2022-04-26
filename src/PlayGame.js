@@ -1,19 +1,28 @@
+import * as ReactDOM from 'react-dom';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
-import AddIcon from '@mui/icons-material/Add';
 import TextField from '@mui/material/TextField'
+import { useState } from 'react';
 
 
-export const PlayGame = () => {
+export const PlayGame = ({
+    score
+    , updateScore
+}) => {
 
     const nav = useNavigate();
+
+    const [word, setWord] = useState(""); 
+    
+    const [scoreForEditing, setScoreForEditing] = useState(score);
+    
 
     return (
         <>
             <Button
             startIcon={<CloseIcon/>}
-            onClick={() => nav("/quit")}
+            onClick={() => nav("/")}
             >
                 Exit
             </Button>
@@ -22,47 +31,64 @@ export const PlayGame = () => {
             </h2>
             <div>
                 <TextField
+                    type="text"
                     label="My Word"
                     id="myWord"
-                    inputProps={{ maxLength: 7 }}
+                    inputProps={{ 
+                        maxLength: 7 
+                    }}
+                    value={word}
+                    onChange={(e) => setWord(e.target.value)}
                 >
                 </TextField>
-                <Button
-                startIcon={<AddIcon/>}>
-                </Button>
             </div>
             <div>
-                <h2>
-                    Special Squares?
-                <Button
-                startIcon={<AddIcon/>}
-                onClick={() => nav("/SpecialSquare")}
+                <TextField
+                    label="Score"
+                    type="number"
+                    value={scoreForEditing}
+                    onChange={(e) =>
+                        // e.target.value < 0
+                        // ? (e.target.value = 0)
+                        // : e.target.value
+                        setScoreForEditing(e.target.value)
+                    }
+                    onClick={
+                        () => 
+                        updateScore(scoreForEditing)
+                    }
                 >
-                </Button>
-                </h2>
+
+                </TextField>
             </div>
-            <Button
+
+            {/* <Button
                 className="generalButton"
                 variant="outlined"
             >
                 Challenged
+            </Button> */}
+            <Button
+                className="generalButton"
+                variant="outlined"
+            >
+                Skip
             </Button>
+            
             <Button
                 className="generalButton"
                 variant="contained"
                 color="success"
                 onClick={() => nav("/waiting")}
+
             >
                 Submit
             </Button>
-            <Button
-                className="generalButton"
-                variant="outlined"
-                onClick={() => nav("/waiting")}
-            >
-                Skip
-            </Button>
+
+
 
       </>
     );
 };
+
+export default PlayGame;
