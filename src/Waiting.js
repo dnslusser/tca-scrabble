@@ -2,7 +2,9 @@ import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
 
-export const Waiting = ({score}) => {
+export const Waiting = ({
+    score
+}) => {
 
     const nav = useNavigate();
 
@@ -19,7 +21,7 @@ export const Waiting = ({score}) => {
                 Waiting...
             </h2>
             <h2>
-                Current Score: {score}
+                Current Score: {[score]}
 
             </h2>
             <Button
