@@ -19,7 +19,7 @@ export const Home = ({
             start: (new Date()).toISOString()
         });
         
-        nav("/playgame")
+        nav("/scorepage")
     };
 
     const win = gameResults.filter(n => n == true).length;
