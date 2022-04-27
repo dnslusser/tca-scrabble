@@ -64,9 +64,22 @@ const App = () => {
 
   const [score, setScore] = useState("");
 
+  const [leftOverScore, setLeftOverScore] = useState("");
+
+  const [totalScore, setTotalScore] = useState("");
+
+  const updateLeftOverScore = async (newLeftOverScore) => {
+    setLeftOverScore(await localforage.setItem('left over score', newLeftOverScore));
+  };
+
   const updateScore = async (newScore) => {
     setScore(await localforage.setItem('score', newScore));
   };
+
+  const updateTotalScore = async (newTotalScore) => {
+    setTotalScore(await localforage.setItem('total score', newTotalScore));
+  };
+
 
   const addGameResult = (gameResult) => {
     setResults([
@@ -78,6 +91,7 @@ const App = () => {
 
   const [currentGame, setCurrentGame] = useState({
     start: ""
+    , score: ""
 
   });
 
@@ -105,11 +119,19 @@ const App = () => {
           <Waiting 
           score={score}
           updateScore={updateScore}
+          currentGame={currentGame}
           />} />
         <Route path="scorePage" element={
           <ScorePage 
             gameResult = {results}
             addGameResult = {addGameResult}
+            updateScore={updateScore}
+            currentGame={currentGame}
+            score={score}
+            leftOverScore={leftOverScore}
+            updateLeftOverScore={updateLeftOverScore}
+            updateTotalScore={updateTotalScore}
+            totalScore={totalScore}
           />} />
         <Route path="SpecialSquare" element={<SpecialSquare />} />
         <Route path="win" element={<Win />} />
