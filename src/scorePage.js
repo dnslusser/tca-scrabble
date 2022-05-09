@@ -1,45 +1,48 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import { TextField } from '@mui/material';
+import { Stack, TextField } from '@mui/material';
 import { useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 
 
 export const ScorePage = ({
     addGameResult
-    , score
+    , currentGame
     , updateScore
-    , totalScore
-    , updateTotalScore
     , updateLeftOverScore
-    , leftOverScore
     
 }) => {
 
     const nav = useNavigate();
 
-    const [scoreForEditing, setScoreForEditing] = useState([score]);
+    const [scoreForEditing, setScoreForEditing] = useState(0);
 
-    const [leftOverScoreForEditing, setLeftOverScoreForEditing] = useState([leftOverScore]);
+    const [leftOverScoreForEditing, setLeftOverScoreForEditing] = useState(0);
 
-    const [totalScoreForEditing, setTotalScoreForEditing] = useState([totalScore]);
-    
-    const setTotalScore = (scoreForEditing, leftOverScore) => {
-        let totalScore = {scoreForEditing} - {leftOverScore};
-        <h2>
-            {totalScore}
-        </h2>
+    const totalScore = scoreForEditing - leftOverScoreForEditing;
+
+    const endGameWin = () => {
+        addGameResult({
+            start: currentGame.start
+            , end: (new Date()).toISOString()
+            , winner: true
+            , score: totalScore
+        });
+        updateScore();
+         nav("/");
     };
 
-    const won = () => {
-        addGameResult(true);
-        nav("/");
-    }
+    const endGameLose = () => {
+        addGameResult({
+            start: currentGame.start
+            , end: (new Date()).toISOString()
+            , winner: false
+            , score: totalScore
+        });
+        updateScore();
+         nav("/");
+    };
 
-    const lost = () => {
-        addGameResult(false);
-        nav("/");
-    }
 
     return (
         <>
@@ -53,11 +56,10 @@ export const ScorePage = ({
             <h2>
                 Play Game
             </h2>
-            <h2>
-
-            </h2>
+            {/* <p>Score</p> */}
             <h2>
             <TextField
+                label="Your Score"
                 placeholder="your score"
                 id="leftOver"
                 type="number"
@@ -78,8 +80,10 @@ export const ScorePage = ({
             -
             <h2>
             </h2>
+            {/* <p>Letters left over</p> */}
             <h2>
             <TextField
+                label="Letters left over"
                 placeholder="letters left over score"
                 id="leftOver"
                 type="number"
@@ -100,22 +104,31 @@ export const ScorePage = ({
             </h2>
             =
             <h2>
-                {setTotalScore}
+                {totalScore}
             </h2>
+            
+            <Stack
+                direction="row" 
+                spacing={2} 
+                justifyContent="center"
+                alignItems="center"
+            >
+                <Button
+                    variant="outlined"
+                    onClick={() => endGameLose()}
+                >
+                    I Lost
+                </Button>
 
-            <Button
-                variant="outlined"
-                color="success"
-                onClick={won}
-            >
-                I Won!
-            </Button>
-            <Button
-                variant="outlined"
-                onClick={lost}
-            >
-                I Lost
-            </Button>
+                <Button
+                    variant="outlined"
+                    color="success"
+                    onClick={() => endGameWin()}
+                >
+                    I won!
+                </Button>
+            </Stack>
+
 
       </>
     );
