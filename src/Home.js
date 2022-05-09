@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import { Card, CardContent, Typography } from '@mui/material';
 
 const findTopWord = (results) => (
     Math.max(
@@ -47,10 +46,19 @@ export const Home = ({
 
     let calculateWinPercentage = ((win / gameResults.length)*100).toFixed(2);
     calculateWinPercentage = isNaN(calculateWinPercentage) ? 0 : Number(calculateWinPercentage);
-
+    
+    const commonStyles = {
+        bgcolor: 'background.paper',
+        borderColor: 'text.primary',
+        m: 1,
+        border: 1,
+        width: '5rem',
+        height: '5rem',
+      };
 
     return (
         <>
+            <img src="https://img.buzzfeed.com/buzzfeed-static/static/2015-04/7/10/enhanced/webdr03/anigif_original-26015-1428416794-4.gif" alt="scrabbleTileGif" width={100} height={100}/>
             <h1
             variant = "primary"
             >
@@ -59,39 +67,13 @@ export const Home = ({
 
                 <h2>
                     Welcome!
-                    {Date}
                 </h2>
+
                 <br></br>
-                {/* <Card
-                    sx={{ minWidth: 275}}
-                    
+                <h2
                 >
-                    <CardContent>
-                        <Typography
-                            variant="h5"
-                            gutterBottom
-                        >
-                            Top Score: {topWord}
-                        </Typography>
-                        <Typography
-                            variant="h5"
-                            gutterBottom
-                        >
-                            Lowest Score: {minWord}
-                        </Typography>
-                        <Typography
-                            variant="h5"
-                            gutterBottom
-                        >
-                            Total Games Played: {gameResults.length}
-                        </Typography>
-                        <Typography
-                            variant="h5"
-                        >
-                            Win Percentage: {calculateWinPercentage} %
-                        </Typography>
-                    </CardContent>
-                </Card> */}
+                    Scoreboard:
+                </h2>
                 <h3
                     
                 >
@@ -107,7 +89,7 @@ export const Home = ({
                     Win Percentage: {calculateWinPercentage} %
                 </h3>
                 <Button
-                    
+                    id= "playButton"
                     variant = "outlined"
                     size="large"
                     onClick={startGame}
