@@ -6,6 +6,8 @@ html {
   text-align: center;
   font-family: 'Quicksand', sans-serif;
   padding: 50px;
+  background-color: #C9DEDB;
+  padding: auto;
 }
 
 .App-header {
@@ -27,5 +29,13 @@ html {
   margin: 15px;
   color: black;
 }
+#playButton {
+  transition: background-color
+  2s ease-out 50ms
+}
 
+#playButton:hover {
+  color: black;
+  background-color: #1876D1;
+}
 
