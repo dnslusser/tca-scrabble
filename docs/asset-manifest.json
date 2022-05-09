@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tca-scrabble/static/css/main.bebb0c4b.css",
+    "main.js": "/tca-scrabble/static/js/main.fc0f90ad.js",
+    "static/js/787.d4f8de75.chunk.js": "/tca-scrabble/static/js/787.d4f8de75.chunk.js",
+    "index.html": "/tca-scrabble/index.html",
+    "main.bebb0c4b.css.map": "/tca-scrabble/static/css/main.bebb0c4b.css.map",
+    "main.fc0f90ad.js.map": "/tca-scrabble/static/js/main.fc0f90ad.js.map",
+    "787.d4f8de75.chunk.js.map": "/tca-scrabble/static/js/787.d4f8de75.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bebb0c4b.css",
+    "static/js/main.fc0f90ad.js"
+  ]
+}
